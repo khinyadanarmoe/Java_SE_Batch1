@@ -20,7 +20,7 @@ public class SalaryTest {
 	public static void display() {
 		
 		for (int i = 0; i < Employee.getCount(); i++) {
-			System.out.println(employees[i]);
+			employees[i].displayDetails();
 		}
 	}
 

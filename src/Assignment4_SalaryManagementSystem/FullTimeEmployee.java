@@ -18,10 +18,8 @@ public class FullTimeEmployee extends Employee{
 	}
 	
 	@Override
-	public String toString() {
-		String objStr = super.toString();
-		objStr += "Total Salary: " + calculateSalary() + "\n";
-		return objStr;
+	public void displayDetails() {
+		this.displayDetails();
+		System.out.println("Total Salary: "+ calculateSalary())
 	}
-
 }
