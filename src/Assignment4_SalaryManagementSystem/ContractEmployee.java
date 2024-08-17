@@ -19,7 +19,7 @@ public class ContractEmployee extends Employee {
 	
 	@Override
 	public void displayDetails() {
-		this.displayDetails();
-		System.out.println("Total Salary: "+ calculateSalary())
+		super.displayDetails();
+		System.out.println("Total Salary: "+ calculateSalary()+ "\n");
 	}
 }

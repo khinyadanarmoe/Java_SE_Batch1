@@ -18,7 +18,7 @@ public class Employee {
 		return name;
 	}
 	
-	public double getEmployeeId() {
+	public int getEmployeeId() {
 		return employeeId;
 	}
 
