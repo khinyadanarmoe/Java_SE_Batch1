@@ -13,63 +13,50 @@ public class VehicleRegistrationSystem {
 
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	public static Vehicle[] vehicleDB = new Vehicle[1000];
+	private Vehicle vehicle;
+	
+	public VehicleRegistrationSystem(String type) {
+		
+		if (type.equalsIgnoreCase("car")) {
+			this.vehicle = new Car();
+		} else if (type.equalsIgnoreCase("truck")) {
+			this.vehicle = new Truck();
+		} else if (type.equalsIgnoreCase("motorcycle")) {
+			this.vehicle = new Motorcycle();
+		} 
+		
+	}
+	
+	public void getVehicleInfo() throws IOException {
+		
+		getCommonInfo();
+		vehicle = this.vehicleInfo();
+		vehicleDB[Vehicle.getCount()-1] = vehicle;
 
-	public Vehicle getVehicleInfo() throws IOException {
+	}
 
-		String flag;
-		do {
+	public void getCommonInfo() throws IOException {
 
-			System.out.print("What is the vehicle type: car/ truck/ motorcycle? ");
-			String type = br.readLine();
+		System.out.print("Brand: ");
+		this.vehicle.setBrand(br.readLine());
+		
+		System.out.print("model: ");
+		this.vehicle.setModel(br.readLine());
 
-			System.out.print("Brand: ");
-			String brand = br.readLine();
+	}
 
-			System.out.print("model: ");
-			String model = br.readLine();
-
-			if (type.equalsIgnoreCase("car")) {
-				vehicleDB[Vehicle.getCount()] = this.getCarInfo(brand, model);
-			} else if (type.equalsIgnoreCase("truck")) {
-				vehicleDB[Vehicle.getCount()] = this.getTruckInfo(brand, model);
-			} else if (type.equalsIgnoreCase("motorcycle")) {
-				vehicleDB[Vehicle.getCount()] = this.getMotorcycleInfo(brand, model);
-			}
-
-			System.out.print("Do you want to add another vehicle: ");
-			flag = br.readLine();
-
-		} while (flag.equalsIgnoreCase("yes"));
+	public Vehicle vehicleInfo() throws IOException {
 		return null;
 
 	}
-
-	public Car getCarInfo(String brand, String model) throws IOException {
-
-		System.out.print("Enter number of doors: ");
-		int doors = Integer.parseInt(br.readLine());
-
-		Car car = new Car(brand, model, doors);
-		return car;
-
+	
+	public static Vehicle[] getVehicleDB() {
+		return vehicleDB;
 	}
-
-	public Truck getTruckInfo(String brand, String model) throws IOException {
-
-		System.out.print("Enter payload capacity: ");
-		Double payloadCap = Double.parseDouble(br.readLine());
-
-		Truck truck = new Truck(brand, model, payloadCap);
-		return truck;
-	}
-
-	public Motorcycle getMotorcycleInfo(String brand, String model) throws IOException {
-
-		System.out.print("Does it have side car: ");
-		boolean hasSidecar =Boolean.parseBoolean(br.readLine());
-
-		Motorcycle motorcycle = new Motorcycle(brand, model, hasSidecar);
-		return motorcycle;
+	
+	public Vehicle getVehicle() {
+		return this.vehicle;
 	}
 
 }
+

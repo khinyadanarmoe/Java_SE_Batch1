@@ -1,8 +1,11 @@
 package Assignment5_VehicleManagementSystem;
 
 public class Truck extends Vehicle {
-	
+
 	private double payloadCapacity;
+
+	public Truck() {
+	}
 
 	public Truck(String brand, String model, double payloadCap) {
 		super(brand, model);
@@ -11,10 +14,10 @@ public class Truck extends Vehicle {
 
 	@Override
 	public void displayInfo() {
-		
+
 		System.out.println("Truck brand: " + getBrand());
 		System.out.println("Truck model: " + getModel());
-		System.out.println("payloadCapacity: " + payloadCapacity  + "\n");
-		
+		System.out.println("payloadCapacity: " + payloadCapacity + "\n");
+
 	}
 }
